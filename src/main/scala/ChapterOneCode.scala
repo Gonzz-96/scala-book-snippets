@@ -4,6 +4,10 @@ import java.math.BigInteger
 
 object ChapterOneCode extends App {
 
+  var cities = Map("USA" -> "Washington", "Paris" -> "France")
+  cities += ("Japan" -> "Tokyo")
+  println(cities.toString)
+
   val javaResult = javaFactorial(BigInteger.valueOf(30L))
   val scalaResult = scalaFactorial(30)
 
