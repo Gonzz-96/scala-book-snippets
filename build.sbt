@@ -7,3 +7,5 @@ lazy val root = (project in file("."))
     name := "scala-book-snippets",
     idePackagePrefix := Some("dev.gonz")
   )
+
+libraryDependencies += "org.scalatest" %% "scalatest" % "3.2.10" % "test"
