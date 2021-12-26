@@ -18,7 +18,7 @@ class ChapterFourTests extends AnyFunSuite {
 
     def apply() = new ChecksumAccumulator
 
-    def calculate(s: String) =
+    def calculate(s: String): Int =
       if (cache.contains(s))
         cache(s)
       else {
