@@ -2,6 +2,10 @@ package dev.gonz
 
 import org.scalatest.funsuite.AnyFunSuite
 
+// If this flag is not present, postfix operations
+// are not allowed by the compiled...
+import scala.language.postfixOps
+
 class ChapterFiveTests extends AnyFunSuite {
 
   test("Integer literals") {
@@ -115,6 +119,40 @@ class ChapterFiveTests extends AnyFunSuite {
     // if no formatting instructions are given to f interpolator,
     // it will behave as s interpolator
     val pi = "Pi"
-    println(f"$pi is approximately ${math.Pi}%.8.")
+    println(f"$pi is approximately ${math.Pi}%.8f.")
+  }
+
+  test("Operators are methods!") {
+    val sum = 1 + 2 // Scala invokes 1.+(2)
+    val sumMore = 1.+(2) // Same as 1 + 2
+    assert(sum == sumMore)
+
+    val longSum = 1 + 2L // Scala invokes 1.+(2L)
+    assert(longSum.isInstanceOf[Long])
+    assert(longSum == 3L)
+
+    val s = "Hello, world!"
+    assert((s indexOf 'o') == 4)
+    assert((s indexOf ('o', 5)) == 8)
+
+    // WHen a method has the "unary_" prefix,
+    // it can be called as a prefix operator
+    // Also, only +, -, ! and ~ simbols can be turned
+    // into prefix operators!!!!
+    assert(-2.0 == (2.0).unary_-)
+
+    // Scala convention says that if a method has
+    // side effects, it should include parenthesis.
+    // If it's not the case, you can omit them
+    assert((s toLowerCase) == "hello, world!")
+  }
+
+  test("Objects equality") {
+    case class Person(age: Int, name: String)
+
+    val p1 = Person(25, "Gonz")
+    val p2 = Person(25, "Gonz")
+
+    assert(p1 == p2)
   }
 }
