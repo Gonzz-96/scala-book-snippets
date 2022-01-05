@@ -3,7 +3,6 @@ package dev.gonz
 import org.scalatest.funsuite.AnyFunSuite
 
 import scala.annotation.tailrec
-import scala.collection.mutable
 import scala.language.implicitConversions
 
 class ChapterSixTests extends AnyFunSuite {
